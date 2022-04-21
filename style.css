@@ -3,10 +3,21 @@ body {
     
 }
 
-.container {
+.container-card {
     min-height: 100vh;
     background-color: rgb(63, 14, 64);
     display: flex;
     justify-content: center !important;
     align-items: center;
+    width: 100%;
+    
+}
+
+
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 5px solid rgba(0, 0, 0, 0.3) !important;
 }
