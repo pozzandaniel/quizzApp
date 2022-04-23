@@ -113,6 +113,8 @@ function nextQuestion() {
 }
 
 function reset() {
+    document.getElementById('header-img').src = './img/trophy.png';
+    document.getElementById('header-img').classList.add('img-end');
     document.getElementById('endScreen').style = '';
     document.getElementById('questionBody').style = 'display:none';
     let totalQ = document.getElementById('totalQ');

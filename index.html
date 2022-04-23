@@ -29,14 +29,11 @@
         </div>
         <div class="container-card">
             <div class="card card-first">
-                <img src="./img/banner.jpg" class="card-img-top" alt="...">
+                <img src="./img/banner.jpg" id="header-img" class="card-img-top" alt="...">
                 <div class="card-body" id="endScreen" style="display: none;">
                     <div>
                         <h2 class="text-center">Das Spiel ist nun beendet!</h2>
-                    </div> 
-                    <div>
-                        <img class="width-100" src="./img/trophy.png" alt="">
-                    </div>  
+                    </div>   
                     <div class="text-center">
                         <span >Du hast <b id="rightA">XXX</b> Fragen von <b id="totalQ">XXX</b> Fragen richtig beantwortet</span>
                     </div>                 
@@ -63,7 +60,7 @@
                             This is some text within a card body.
                         </div>
                     </div>
-                    <div class="card-footer py-3">
+                    <div class="card-footer py-1">
                         <span><b id="presentQ">1</b> von <b id="lastQ">5</b> Fragen</span>
                         <button onclick="nextQuestion()" class="btn btn-primary" id="next-button" disabled>Nächste Frage</button>
                     </div>

@@ -9,18 +9,19 @@ h1 {
     background-color: rgb(63, 14, 64);
     display: flex;
     justify-content: center !important;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
+    padding-top: 18px;
 }
 .card-first {
     height: 70%;
     width: 40%;
 }
 .card-body {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
 .card-title {
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 .answer-switch {
     cursor: pointer;
@@ -42,4 +43,8 @@ h1 {
 }
 .width-100 {
     width: 100%;
+}
+.img-end {
+    height: 400px;
+    object-fit: contain;
 }
