@@ -50,6 +50,7 @@ let questions = [
 
 ];
 let currentQ = 0;
+let positivResult = 0;
 
 function init() {
    let lastQ = document.getElementById('lastQ');
@@ -88,6 +89,8 @@ function answer(selection){
     let idOfRightAnswer = `answer${question['correct']}`;
     if (selectionNumber== correctAnswer){
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        positivResult++;
+        
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
@@ -112,4 +115,8 @@ function nextQuestion() {
 function reset() {
     document.getElementById('endScreen').style = '';
     document.getElementById('questionBody').style = 'display:none';
+    let totalQ = document.getElementById('totalQ');
+    let rightA = document.getElementById('rightA');
+    totalQ.innerHTML = questions.length;
+    rightA.innerHTML = positivResult;
 }
