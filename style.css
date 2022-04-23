@@ -22,7 +22,12 @@ h1 {
 .card-title {
     font-size: 1rem;
 }
-
+.answer-switch {
+    cursor: pointer;
+}
+.answer-switch:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
 
 
 .card-footer {

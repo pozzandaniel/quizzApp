@@ -16,7 +16,7 @@
     <title>QuizApp</title>
 </head>
 
-<body>
+<body onload="init()">
 
 
     <!-- As a heading -->
@@ -31,29 +31,29 @@
             <div class="card card-first">
                 <img src="./img/banner.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Fragen</h5>
+                    <h5 class="card-title" id="questionTitle">Fragen</h5>
                     <div class="card mb-2">
-                        <div class="card-body">
+                        <div class="card-body answer-switch" id="answer1" onclick="answer('answer1')">
                             This is some text within a card body.
                         </div>
                     </div>
                     <div class="card mb-2">
-                        <div class="card-body">
+                        <div class="card-body answer-switch " id="answer2" onclick="answer('answer2')">
                             This is some text within a card body.
                         </div>
                     </div>
                     <div class="card mb-2">
-                        <div class="card-body">
+                        <div class="card-body answer-switch" id="answer3" onclick="answer('answer3')">
                             This is some text within a card body.
                         </div>
                     </div>
                     <div class="card mb-2">
-                        <div class="card-body">
+                        <div class="card-body answer-switch" id="answer4" onclick="answer('answer4')">
                             This is some text within a card body.
                         </div>
                     </div>
                     <div class="card-footer py-3">
-                        <span><b>1</b> von <b>5</b> Fragen</span>
+                        <span><b id="presentQ">1</b> von <b id="lastQ">5</b> Fragen</span>
                         <button class="btn btn-primary">Nächste Frage</button>
                     </div>
                 </div>
