@@ -5,7 +5,7 @@ let questions = [
         'answer2': 'MIT und US-Verteidigungsministerium', 
         'answer3': 'WWF', 
         'answer4': 'Napoleon Bonaparte',
-        'correct': 'answer2'
+        'correct': '2'
     },
     {
         'question': 'Wo ist der Sitz von IBM?',
@@ -75,10 +75,20 @@ function showQuestion() {
 }
 
 function answer(selection){
-    let answer = document.getElementById(selection);
-    let right = questions[currentQ]['correct'];
-    let correctAnswer = document.getElementById(right);
-    answer.style = 'background-color: rgba(0, 0, 250, 0.1)';
-    correctAnswer.style = 'background-color: green; color: white;';
+    let question = questions[currentQ];
+    let correctAnswer = question['correct'];
+    let selectionNumber = selection.slice(-1);
+    let idOfRightAnswer = `answer${question['correct']}`;
+    console.log(selectionNumber);
+    console.log(correctAnswer);
+    if (selectionNumber== correctAnswer){
+        console.log('Die Antwort ist genau richtig!!')
+        document.getElementById(selection).parentNode.classList.add('bg-success');
+    } else {
+        console.log('Die Antwort ist leider Falsch :(')
+        document.getElementById(selection).parentNode.classList.add('bg-danger');
+        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+    }
+    
     
 }

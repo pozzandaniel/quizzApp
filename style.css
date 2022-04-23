@@ -28,11 +28,12 @@ h1 {
 .answer-switch:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
-
-
 .card-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-top: 5px solid rgba(0, 0, 0, 0.3) !important;
+}
+.bg-success, .bg-danger {
+    color: white;
 }
