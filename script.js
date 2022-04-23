@@ -110,6 +110,8 @@ function nextQuestion() {
     document.getElementById('next-button').disabled = true; 
     showQuestion();
     currentQuestion();
+    percentCalculate();
+
 }
 
 function reset() {
@@ -121,4 +123,13 @@ function reset() {
     let rightA = document.getElementById('rightA');
     totalQ.innerHTML = questions.length;
     rightA.innerHTML = positivResult;
+}
+
+function percentCalculate(){
+    let progressBar = document.getElementById('progressBar');
+    let percent = currentQ/questions.length;
+    percent = percent*100;
+    percent = Math.round(percent);
+    progressBar.innerHTML = `${percent}%`;
+    progressBar.style.width = `${percent}%`;
 }
