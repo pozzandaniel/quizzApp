@@ -64,18 +64,21 @@ function currentQuestion() {
 }
 
 function showQuestion() {
-    let question = questions[currentQ];
-    let questionTitle = document.getElementById('questionTitle');
-    let answer1 = document.getElementById('answer1');
-    let answer2 = document.getElementById('answer2');
-    let answer3 = document.getElementById('answer3');
-    let answer4 = document.getElementById('answer4');
-    questionTitle.innerHTML = `${question['question']}`;
-    answer1.innerHTML = `${question['answer1']}`;
-    answer2.innerHTML = `${question['answer2']}`;
-    answer3.innerHTML = `${question['answer3']}`;
-    answer4.innerHTML = `${question['answer4']}`;
-    
+    if (currentQ >= questions.length){
+        reset();
+    } else {
+        let question = questions[currentQ];
+        let questionTitle = document.getElementById('questionTitle');
+        let answer1 = document.getElementById('answer1');
+        let answer2 = document.getElementById('answer2');
+        let answer3 = document.getElementById('answer3');
+        let answer4 = document.getElementById('answer4');
+        questionTitle.innerHTML = `${question['question']}`;
+        answer1.innerHTML = `${question['answer1']}`;
+        answer2.innerHTML = `${question['answer2']}`;
+        answer3.innerHTML = `${question['answer3']}`;
+        answer4.innerHTML = `${question['answer4']}`;
+    }
 }
 
 function answer(selection){
@@ -104,4 +107,9 @@ function nextQuestion() {
     document.getElementById('next-button').disabled = true; 
     showQuestion();
     currentQuestion();
+}
+
+function reset() {
+    document.getElementById('endScreen').style = '';
+    document.getElementById('questionBody').style = 'display:none';
 }
