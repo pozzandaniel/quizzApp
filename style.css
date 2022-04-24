@@ -4,6 +4,10 @@ body {
 h1 {
     font-size: 1.5rem !important;
 }
+.navbar {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
 .container-card {
     min-height: 100vh;
     background-color: rgb(63, 14, 64);
@@ -12,6 +16,12 @@ h1 {
     align-items: flex-start;
     width: 100%;
     padding-top: 18px;
+}
+.top-card {
+    min-height: 377px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .card-first {
     height: 70%;

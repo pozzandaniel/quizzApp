@@ -51,6 +51,9 @@ let questions = [
 ];
 let currentQ = 0;
 let positivResult = 0;
+let audio_success = new Audio('./audio/success.mp3');
+let audio_wrong = new Audio('./audio/wrong.mp3');
+let audio_triumph = new Audio('./audio/triumph.mp3');
 
 function init() {
    let lastQ = document.getElementById('lastQ');
@@ -89,11 +92,13 @@ function answer(selection){
     let idOfRightAnswer = `answer${question['correct']}`;
     if (selectionNumber== correctAnswer){
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        audio_success.play();
         positivResult++;
         
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+        audio_wrong.play();
     }
     document.getElementById('next-button').disabled = false;   
 }
@@ -123,6 +128,7 @@ function reset() {
     let rightA = document.getElementById('rightA');
     totalQ.innerHTML = questions.length;
     rightA.innerHTML = positivResult;
+    audio_triumph.play();
 }
 
 function percentCalculate(){
