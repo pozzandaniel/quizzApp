@@ -68,21 +68,29 @@ function currentQuestion() {
 }
 
 function showQuestion() {
-    if (currentQ >= questions.length){
+    if (gameIsOver()){
         reset();
     } else {
-        let question = questions[currentQ];
-        let questionTitle = document.getElementById('questionTitle');
-        let answer1 = document.getElementById('answer1');
-        let answer2 = document.getElementById('answer2');
-        let answer3 = document.getElementById('answer3');
-        let answer4 = document.getElementById('answer4');
-        questionTitle.innerHTML = `${question['question']}`;
-        answer1.innerHTML = `${question['answer1']}`;
-        answer2.innerHTML = `${question['answer2']}`;
-        answer3.innerHTML = `${question['answer3']}`;
-        answer4.innerHTML = `${question['answer4']}`;
+        newQuestion();
     }
+}
+
+function gameIsOver() {
+    return currentQ >= questions.length;
+}
+
+function newQuestion() {
+    let question = questions[currentQ];
+    let questionTitle = document.getElementById('questionTitle');
+    let answer1 = document.getElementById('answer1');
+    let answer2 = document.getElementById('answer2');
+    let answer3 = document.getElementById('answer3');
+    let answer4 = document.getElementById('answer4');
+    questionTitle.innerHTML = `${question['question']}`;
+    answer1.innerHTML = `${question['answer1']}`;
+    answer2.innerHTML = `${question['answer2']}`;
+    answer3.innerHTML = `${question['answer3']}`;
+    answer4.innerHTML = `${question['answer4']}`;
 }
 
 function answer(selection){
@@ -90,20 +98,48 @@ function answer(selection){
     let correctAnswer = question['correct'];
     let selectionNumber = selection.slice(-1);
     let idOfRightAnswer = `answer${question['correct']}`;
-    if (selectionNumber== correctAnswer){
-        document.getElementById(selection).parentNode.classList.add('bg-success');
-        audio_success.play();
-        positivResult++;
-        
+    if (rightAnswer(selectionNumber, correctAnswer)){
+        rightAnswerEffect(selection); 
     } else {
-        document.getElementById(selection).parentNode.classList.add('bg-danger');
-        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
-        audio_wrong.play();
+        wrongAnswerEffect(selection, idOfRightAnswer);
     }
+    enableButton();
+}
+
+function enableButton(){
     document.getElementById('next-button').disabled = false;   
 }
 
+function rightAnswer(selectionNumber, correctAnswer){
+    return selectionNumber== correctAnswer;
+}
+
+function rightAnswerEffect(selection) {
+    document.getElementById(selection).parentNode.classList.add('bg-success');
+    audio_success.play();
+    positivResult++;
+}
+
+function wrongAnswerEffect(selection, idOfRightAnswer){
+    document.getElementById(selection).parentNode.classList.add('bg-danger');
+    document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+    audio_wrong.play();
+}
+
 function nextQuestion() {
+    removeBackgroundColorOfAnswers();
+    currentQ++;
+    disableButton();
+    showQuestion();
+    currentQuestion();
+    percentCalculate();
+}
+
+function disableButton(){
+    document.getElementById('next-button').disabled = true; 
+}
+
+function removeBackgroundColorOfAnswers(){
     let question = questions[currentQ];
     let idOfRightAnswer = `answer${question['correct']}`;
     document.getElementById(idOfRightAnswer).parentNode.classList.remove('bg-success');
@@ -111,12 +147,6 @@ function nextQuestion() {
     document.getElementById('answer2').parentNode.classList.remove('bg-danger');
     document.getElementById('answer3').parentNode.classList.remove('bg-danger');
     document.getElementById('answer4').parentNode.classList.remove('bg-danger');
-    currentQ++;
-    document.getElementById('next-button').disabled = true; 
-    showQuestion();
-    currentQuestion();
-    percentCalculate();
-
 }
 
 function reset() {
