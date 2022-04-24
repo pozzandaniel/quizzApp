@@ -133,3 +133,14 @@ function percentCalculate(){
     progressBar.innerHTML = `${percent}%`;
     progressBar.style.width = `${percent}%`;
 }
+
+function restartGame() {
+    document.getElementById('header-img').src = './img/banner.jpg';
+    document.getElementById('questionBody').style = '';
+    document.getElementById('endScreen').style = 'display:none';
+    document.getElementById('header-img').classList.remove('img-end');
+    currentQ = 0;
+    positivResult = 0;
+    init();
+    percentCalculate();
+}

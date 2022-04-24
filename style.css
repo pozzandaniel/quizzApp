@@ -51,3 +51,8 @@ h1 {
 .progress {
     border-radius: 0 !important;
 }
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
