@@ -4,7 +4,7 @@
        display: flex;
    }
    .card-first {
-       height: 95%;
+       height: 100%;
        width: 50%;
    }
    .progress {
@@ -56,5 +56,7 @@
     .top-card {
         min-height: 412px;
     }
-    
+    .selection-title {
+        display: none;
+    }
 }

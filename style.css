@@ -1,16 +1,30 @@
 body {
-    background-color: rgb(63, 14, 64) !important;
+    background-color: rgba(0, 0, 0, 1);
+    font-family: 'Lateef', cursive;
+    margin: 0 !important;
 }
+
 h1 {
     font-size: 1.5rem !important;
 }
+.link {
+    text-decoration: none;
+    color: black;
+}
+.link:hover {
+    color: black;
+}
+
 .navbar {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
 .container-card {
     min-height: 100vh;
-    background-color: rgb(63, 14, 64);
+    /* background-color: rgb(63, 14, 64); */
+    background-image: url('./img/quiz.jpg');
+    background-size: cover;
+
     display: flex;
     justify-content: center !important;
     align-items: flex-start;
@@ -64,5 +78,40 @@ h1 {
 .button-row {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
     margin-top: 24px;
 }
+.selection-title {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: black;
+    height: 100vh;
+    padding: 12px;
+}  
+.category-container {
+    margin: 12px !important;
+}
+.card-img-top{
+    height: 240px;
+    object-fit: cover;
+}
+.cat-img{
+    max-height: 130px;
+    object-fit: cover;
+}
+.top-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.dropdown-container {
+    display: flex;
+    flex-direction: column;
+   
+}
+.height-400px{
+    height: 400px !important;
+}
+

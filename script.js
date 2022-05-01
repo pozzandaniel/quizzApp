@@ -1,51 +1,169 @@
+
+let category = '';
+let difficulty = 'easy';
+
+async function loadQuestionSet() {
+    category = localStorage.getItem('category');
+    difficulty = localStorage.getItem('difficulty');
+    amount = localStorage.getItem('amount');
+    let url = `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`;
+    let response = await fetch(url);
+    let responseAsJSON = await response.json();
+    // let question = responseAsJSON['results'][0]['question'];
+    fillQuestions(responseAsJSON); 
+    fillAnswersRandomly(responseAsJSON);
+    init();
+}
+
+function selectCategory(id) {
+   category = document.getElementById(id).id;
+   localStorage.setItem('category', category);
+}
+
+function setDifficulty(id){
+    difficulty = document.getElementById(id).id;
+    localStorage.setItem('difficulty', difficulty);
+}
+
+// function setNumberQuestions(){
+//     amount = document.getElementById('questionsInput').value;
+//     localStorage.setItem('amount', amount);
+//     console.log(amount);
+// }
+
+function fillQuestions(responseAsJSON){
+    for(let i = 0; i < questions.length; i++){
+        let question = responseAsJSON['results'][i]['question'];
+        questions[i]['question'] = question;
+    }
+}
+
+function fillAnswersRandomly(responseAsJSON){
+    for(let i = 0; i < questions.length; i++) {
+        getRandomPosition();
+        let inc_answ0 = responseAsJSON['results'][i]['incorrect_answers'][0];
+        let inc_answ1 = responseAsJSON['results'][i]['incorrect_answers'][1];
+        let inc_answ2 = responseAsJSON['results'][i]['incorrect_answers'][2];
+        let correct_answer = responseAsJSON['results'][i]['correct_answer']; 
+        questions[i][`answer${a1}`] = inc_answ0;
+        questions[i][`answer${a2}`] = inc_answ1;
+        questions[i][`answer${a3}`] = inc_answ2;
+        questions[i][`answer${a4}`] = correct_answer;
+        questions[i]['correct'] = `${a4}`;
+    }
+}
+
+
+let a1;
+let a2;
+let a3;
+let a4;
+
+
+function getRandomPosition(){
+    for(let i = 0; i < Infinity; i++){
+        let number1 = getRandomNumber(1, 4);
+        let number2 = getRandomNumber(1, 4);
+        let number3 = getRandomNumber(1, 4);
+        let number4 = getRandomNumber(1, 4);
+        if(number1 != number2 && number1 != number3 && number1 !=number4 && number2 != number3 && number2 != number4 && number3 != number4){
+            a1 = number1;
+            a2 = number2;
+            a3 = number3;
+            a4 = number4;
+            break;
+        }
+    }  
+}
+
+function getRandomNumber(min, max){
+    let number = Math.random()*(max-min)+min;
+    return Math.round(number);
+}
+
+
+
+
 let questions = [
     {
-        'question': 'Wer hat Internet entwickelt?',
-        'answer1': 'Steve Jobs',
-        'answer2': 'MIT und US-Verteidigungsministerium', 
-        'answer3': 'WWF', 
-        'answer4': 'Napoleon Bonaparte',
-        'correct': '2'
+        'question': '',
+        'answer1': '',
+        'answer2': '', 
+        'answer3': '', 
+        'answer4': '',
+        'correct': ''
     },
     {
-        'question': 'Wo ist der Sitz von IBM?',
-        'answer1': 'die Niederlanden',
-        'answer2': 'Österreich', 
-        'answer3': 'Irland', 
-        'answer4': 'die Vereinigten Staaten',
-        'correct': '4'
+        'question': '',
+        'answer1': '',
+        'answer2': '', 
+        'answer3': '', 
+        'answer4': '',
+        'correct': ''
     },
     {
-        'question': 'Welcher Satz gehört nicht zu Asimovs Gesetze?',
-        'answer1': 'Ein Roboter darf kein menschliches Wesen verletzen',
-        'answer2': 'Ein Roboter muss den ihm von einem Menschen gegebenen Befehlen gehorchen', 
-        'answer3': 'Ein Roboter darf kein menschliches Wesen in Notfallsituationen helfen', 
-        'answer4': 'Ein Roboter muss seine Existenz beschützen',
-        'correct': '3'
+        'question': '',
+        'answer1': '',
+        'answer2': '', 
+        'answer3': '', 
+        'answer4': '',
+        'correct': ''
     },
     {
-        'question': 'Welche ist die beliebste Programmiersprache laut Redmonk-Index (2022)',
-        'answer1': 'Javascript',
-        'answer2': 'PHP', 
-        'answer3': 'Swift', 
-        'answer4': 'C/C++',
-        'correct': '1'
+        'question': '',
+        'answer1': '',
+        'answer2': '', 
+        'answer3': '', 
+        'answer4': '',
+        'correct': ''
     },
     {
-        'question': 'Wann wurde das Konzept von Bitcoin erstmals vorgeschlagen?',
-        'answer1': '1975',
-        'answer2': '1916', 
-        'answer3': '2018', 
-        'answer4': '2008',
-        'correct': '4'
+        'question': '',
+        'answer1': '',
+        'answer2': '', 
+        'answer3': '', 
+        'answer4': '',
+        'correct': ''
     },
     {
-        'question': 'Welche ist die beliebste Programmiersprache laut Redmonk-Index (2022)',
-        'answer1': 'Javascript',
-        'answer2': 'PHP', 
-        'answer3': 'Swift', 
-        'answer4': 'C/C++',
-        'correct': '1'
+        'question': '',
+        'answer1': '',
+        'answer2': '', 
+        'answer3': '', 
+        'answer4': '',
+        'correct': ''
+    },
+    {
+        'question': '',
+        'answer1': '',
+        'answer2': '', 
+        'answer3': '', 
+        'answer4': '',
+        'correct': ''
+    },
+    {
+        'question': '',
+        'answer1': '',
+        'answer2': '', 
+        'answer3': '', 
+        'answer4': '',
+        'correct': ''
+    },
+    {
+        'question': '',
+        'answer1': '',
+        'answer2': '', 
+        'answer3': '', 
+        'answer4': '',
+        'correct': ''
+    },
+    {
+        'question': '',
+        'answer1': '',
+        'answer2': '', 
+        'answer3': '', 
+        'answer4': '',
+        'correct': ''
     }
 
 ];
@@ -54,6 +172,7 @@ let positivResult = 0;
 let audio_success = new Audio('./audio/success.mp3');
 let audio_wrong = new Audio('./audio/wrong.mp3');
 let audio_triumph = new Audio('./audio/triumph.mp3');
+let audio_failure = new Audio('./audio/game_over.mp3');
 
 function init() {
    let lastQ = document.getElementById('lastQ');
@@ -80,12 +199,14 @@ function gameIsOver() {
 }
 
 function newQuestion() {
+    let categoryImg = document.getElementById('header-img');
     let question = questions[currentQ];
     let questionTitle = document.getElementById('questionTitle');
     let answer1 = document.getElementById('answer1');
     let answer2 = document.getElementById('answer2');
     let answer3 = document.getElementById('answer3');
     let answer4 = document.getElementById('answer4');
+    categoryImg.src = `./img/${category}.jpg`;
     questionTitle.innerHTML = `${question['question']}`;
     answer1.innerHTML = `${question['answer1']}`;
     answer2.innerHTML = `${question['answer2']}`;
@@ -149,8 +270,19 @@ function removeBackgroundColorOfAnswers(){
     document.getElementById('answer4').parentNode.classList.remove('bg-danger');
 }
 
+let triumph = './img/trophy.png';
+let failure = './img/game_over.jpg';
+
 function reset() {
-    document.getElementById('header-img').src = './img/trophy.png';
+    if (positivResult/questions.length > 0.6){
+        document.getElementById('header-img').src = triumph;
+        document.getElementById('header-img').classList.add('height-400px');
+        audio_triumph.play();
+    } else {
+        document.getElementById('header-img').src = failure;
+        document.getElementById('header-img').classList.add('height-400px');
+        audio_failure.play();
+    }
     document.getElementById('header-img').classList.add('img-end');
     document.getElementById('endScreen').style = '';
     document.getElementById('questionBody').style = 'display:none';
@@ -158,7 +290,6 @@ function reset() {
     let rightA = document.getElementById('rightA');
     totalQ.innerHTML = questions.length;
     rightA.innerHTML = positivResult;
-    audio_triumph.play();
 }
 
 function percentCalculate(){
@@ -175,6 +306,7 @@ function restartGame() {
     document.getElementById('questionBody').style = '';
     document.getElementById('endScreen').style = 'display:none';
     document.getElementById('header-img').classList.remove('img-end');
+    document.getElementById('header-img').classList.remove('height-400px');
     currentQ = 0;
     positivResult = 0;
     init();

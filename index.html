@@ -17,7 +17,7 @@
     <title>QuizApp</title>
 </head>
 
-<body onload="init()">
+<body onload="loadQuestionSet()">
     
     
     <!-- As a heading -->
@@ -25,7 +25,7 @@
         <div class="container-fluid">
             
             <span class="navbar-brand mb-0 h1">
-                <h1>QuizApp</h1>
+                <a class="link" href="home.html"><h1>QuizApp</h1></a>
             </span>
         </div>
     </nav>
@@ -34,7 +34,8 @@
                 <img src="./img/banner.jpg" id="header-img" class="card-img-top" alt="...">
                 <div class="progress">
                     <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0;" aria-valuenow="25"
-                        aria-valuemin="0" aria-valuemax="100"></div>
+                        aria-valuemin="0" aria-valuemax="100">
+                    </div>
                 </div>
                 <div class="card-body" id="endScreen" style="display: none;">
 
@@ -47,6 +48,7 @@
                     </div>
                     <div class="button-row">
                         <button onclick="restartGame()" class="btn btn-primary">Erneut spielen</button>
+                        <a href="./home.html"><button class="btn btn-primary">Home</button></a>
                     </div>
                 </div>
                 <div class="card-body" id="questionBody">
@@ -74,12 +76,13 @@
                     </div>
                 </div>
                     
-                    <div class="card-footer py-1">
-                        <span><b id="presentQ">1</b> von <b id="lastQ">5</b> Fragen</span>
-                        <button onclick="nextQuestion()" class="btn btn-primary" id="next-button" disabled>Nächste
-                            Frage</button>
-                    </div>
+                <div class="card-footer py-1">
+                    <span><b id="presentQ">1</b> von <b id="lastQ">5</b> Fragen</span>
+                    <button onclick="nextQuestion()" class="btn btn-primary" id="next-button" disabled>Nächste
+                        Frage
+                    </button>
                 </div>
+            
             </div>
         </div>
 
