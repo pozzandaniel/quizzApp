@@ -21,7 +21,7 @@
     <title>QuizzApp</title>
 </head>
 
-<body>
+<body onload="setDifficultyDefault(), setNumberQuestionsDefault()">
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
 
@@ -48,38 +48,37 @@
                 </div>
                 <div class="offcanvas-body">
                 <div>
-                    Here you can set the difficulty of the quiz
+                    Here you can set the difficulty of the quiz and the number of the questions.
                 </div>
                 <div class="dropdown-container">
                     <div class="dropdown mt-3">
-                        <!-- <div class="input-group mb-3">
+                        <div class="input-group mb-3">
                             <input id="questionsInput" type="text" class="form-control" placeholder="Number of questions" aria-label="Recipient's username" aria-describedby="button-addon2">
                             <button onclick="setNumberQuestions()" class="btn btn-outline-secondary" type="button" id="button-addon2">Set</button>
-                          </div> -->
+                        </div>
                     </div>
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
                         Set Difficulty
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a id="easy" class="dropdown-item" onclick="setDifficulty('easy')" href="#">Easy</a></li>
                         <li><a id="medium" class="dropdown-item" onclick="setDifficulty('medium')" href="#">Medium</a></li>
                         <li><a id="hard" class="dropdown-item" onclick="setDifficulty('hard')" href="#">Hard</a></li>
-                        </ul>
+                    </ul>
+                </div>
+                <div class="parameters-box">
+                    <div id="difficulty-box">
+    
                     </div>
+                    <div id="questionsNumber-box">
+                        
+                    </div>
+
+                </div>
                 
                 </div>
             </div>
             <div class="category-container row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <a class="link" href="./index.html" onclick="selectCategory('27')">
-                        <div class="card">
-                            <img src="./img/27.jpg" class="cat-img card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 id="27" class="card-title">Animals</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
                 <div class="col">
                     <a class="link" href="./index.html" onclick="selectCategory('18')">
                         <div class="card">
@@ -101,7 +100,7 @@
                     </a>
                 </div>
                 <div class="col">
-                    <a class="link" href="./index.html" onclick="selectCategory(id)">
+                    <a class="link" href="./index.html" onclick="selectCategory('23')">
                         <div class="card">
                             <img src="./img/23.jpg" class="cat-img card-img-top" alt="...">
                             <div class="card-body">
@@ -157,6 +156,18 @@
                             <div class="card-body">
                                 <a class="link" href="./index.html">
                                     <h5 id="9" class="card-title">General Knowledge</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="link" href="./index.html" onclick="selectCategory('27')">
+                        <div class="card">
+                            <img src="./img/27.jpg" class="cat-img card-img-top" alt="...">
+                            <div class="card-body">
+                                <a class="link" href="./index.html">
+                                    <h5 id="27" class="card-title">Animals</h5>
                                 </a>
                             </div>
                         </div>

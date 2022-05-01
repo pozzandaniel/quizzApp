@@ -115,3 +115,7 @@ h1 {
     height: 400px !important;
 }
 
+.parameters-box{
+    position: absolute;
+    bottom: 0;
+}

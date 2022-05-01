@@ -1,13 +1,14 @@
-let amount = 20;
+let amount = 6;
 let category = '';
 let difficulty = 'easy';
 // load of the question from the API: Open Trivia Database
 async function loadQuestionSet() {
+    amount = localStorage.getItem('amount');
     pushObjectInsideArray();
     category = localStorage.getItem('category');    //the variable category is picked up from the local storage
     difficulty = localStorage.getItem('difficulty');  //the variable difficulty is picked up from the local storage
     // amount = localStorage.getItem('amount');
-    let url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=easy&type=multiple`;  //that's the link from the API, the database of the questions
+    let url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`;  //that's the link from the API, the database of the questions
     let response = await fetch(url);        // the data are taken from the url
     let responseAsJSON = await response.json();     //the data are converted in JSON
     getQuestions();
@@ -16,21 +17,34 @@ async function loadQuestionSet() {
     init();
 }
 
+function setDifficultyDefault(){
+    difficulty = 'easy';
+    localStorage.setItem('difficulty', difficulty);
+}
+
+function setNumberQuestionsDefault(){
+    amount = 6;
+    localStorage.setItem('amount', amount);
+}
+
 function selectCategory(id) {
     category = document.getElementById(id).id;
     localStorage.setItem('category', category);
 }
 
 function setDifficulty(id){
+    document.getElementById('difficulty-box').innerHTML = '';
     difficulty = document.getElementById(id).id;
     localStorage.setItem('difficulty', difficulty);
+    document.getElementById('difficulty-box').innerHTML += `<h3>Selected difficulty is: ${difficulty}</h3>`;
 }
 
-// function setNumberQuestions(){
-    //     amount = document.getElementById('questionsInput').value;
-    //     localStorage.setItem('amount', amount);
-    //     console.log(amount);
-    // }
+function setNumberQuestions(){
+        document.getElementById('questionsNumber-box').innerHTML = '';
+        amount = document.getElementById('questionsInput').value;
+        localStorage.setItem('amount', amount);
+        document.getElementById('questionsNumber-box').innerHTML += `<h3>Number of questions: ${amount}</h3>`;
+    }
     
     function pushObjectInsideArray(){
         for(let i = 0; i < amount; i++){
