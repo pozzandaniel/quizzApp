@@ -1,23 +1,24 @@
-
+let amount = 20;
 let category = '';
 let difficulty = 'easy';
 // load of the question from the API: Open Trivia Database
 async function loadQuestionSet() {
+    pushObjectInsideArray();
     category = localStorage.getItem('category');    //the variable category is picked up from the local storage
     difficulty = localStorage.getItem('difficulty');  //the variable difficulty is picked up from the local storage
     // amount = localStorage.getItem('amount');
-    let url = `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`;  //that's the link from the API, the database of the questions
+    let url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=easy&type=multiple`;  //that's the link from the API, the database of the questions
     let response = await fetch(url);        // the data are taken from the url
     let responseAsJSON = await response.json();     //the data are converted in JSON
-    // let question = responseAsJSON['results'][0]['question'];
+    getQuestions();
     fillQuestions(responseAsJSON);   //the JSON data are used in the function to fill the array with the questions of the quiz
     fillAnswersRandomly(responseAsJSON);        //the JSON data are used to fill randomly the answers inside the assigned boxes
     init();
 }
 
 function selectCategory(id) {
-   category = document.getElementById(id).id;
-   localStorage.setItem('category', category);
+    category = document.getElementById(id).id;
+    localStorage.setItem('category', category);
 }
 
 function setDifficulty(id){
@@ -26,18 +27,34 @@ function setDifficulty(id){
 }
 
 // function setNumberQuestions(){
-//     amount = document.getElementById('questionsInput').value;
-//     localStorage.setItem('amount', amount);
-//     console.log(amount);
-// }
-
-// the function use a loop to obtain the questions inside the object from the url. Then these informations are used to fill the field questions in the array
-function fillQuestions(responseAsJSON){
-    for(let i = 0; i < questions.length; i++){
-        let question = responseAsJSON['results'][i]['question'];
-        questions[i]['question'] = question;
+    //     amount = document.getElementById('questionsInput').value;
+    //     localStorage.setItem('amount', amount);
+    //     console.log(amount);
+    // }
+    
+    function pushObjectInsideArray(){
+        for(let i = 0; i < amount; i++){
+            questions.push(singleQuestion);
+        }
+        let questionsText = JSON.stringify(questions);
+        localStorage.setItem('questions', questionsText);
+        
+    }
+    
+    function getQuestions() {
+        let questionsText = localStorage.getItem('questions');
+        questions = JSON.parse(questionsText);
+    }
+    
+    // the function use a loop to obtain the questions inside the object from the url. Then these informations are used to fill the field questions in the array
+    function fillQuestions(responseAsJSON){
+        for(let i = 0; i < amount; i++){
+            let question = responseAsJSON['results'][i]['question'];
+            questions[i]['question'] = question;
+            
     }
 }
+
 // This function fill the array with the answers of the Open Trivia Database
 function fillAnswersRandomly(responseAsJSON){
     for(let i = 0; i < questions.length; i++) {
@@ -84,92 +101,101 @@ function getRandomNumber(min, max){
     return Math.round(number);
 }
 
+let singleQuestion = {
+    'question': '',
+    'answer1': '',
+    'answer2': '', 
+    'answer3': '', 
+    'answer4': '',
+    'correct': ''
+}
+
+let questions = [];
 
 
+// let questions = [
+//     {
+//         'question': '',
+//         'answer1': '',
+//         'answer2': '', 
+//         'answer3': '', 
+//         'answer4': '',
+//         'correct': ''
+//     },
+//     {
+//         'question': '',
+//         'answer1': '',
+//         'answer2': '', 
+//         'answer3': '', 
+//         'answer4': '',
+//         'correct': ''
+//     },
+//     {
+//         'question': '',
+//         'answer1': '',
+//         'answer2': '', 
+//         'answer3': '', 
+//         'answer4': '',
+//         'correct': ''
+//     },
+//     {
+//         'question': '',
+//         'answer1': '',
+//         'answer2': '', 
+//         'answer3': '', 
+//         'answer4': '',
+//         'correct': ''
+//     },
+//     {
+//         'question': '',
+//         'answer1': '',
+//         'answer2': '', 
+//         'answer3': '', 
+//         'answer4': '',
+//         'correct': ''
+//     },
+//     {
+//         'question': '',
+//         'answer1': '',
+//         'answer2': '', 
+//         'answer3': '', 
+//         'answer4': '',
+//         'correct': ''
+//     },
+//     {
+//         'question': '',
+//         'answer1': '',
+//         'answer2': '', 
+//         'answer3': '', 
+//         'answer4': '',
+//         'correct': ''
+//     },
+//     {
+//         'question': '',
+//         'answer1': '',
+//         'answer2': '', 
+//         'answer3': '', 
+//         'answer4': '',
+//         'correct': ''
+//     },
+//     {
+//         'question': '',
+//         'answer1': '',
+//         'answer2': '', 
+//         'answer3': '', 
+//         'answer4': '',
+//         'correct': ''
+//     },
+//     {
+//         'question': '',
+//         'answer1': '',
+//         'answer2': '', 
+//         'answer3': '', 
+//         'answer4': '',
+//         'correct': ''
+//     }
 
-let questions = [
-    {
-        'question': '',
-        'answer1': '',
-        'answer2': '', 
-        'answer3': '', 
-        'answer4': '',
-        'correct': ''
-    },
-    {
-        'question': '',
-        'answer1': '',
-        'answer2': '', 
-        'answer3': '', 
-        'answer4': '',
-        'correct': ''
-    },
-    {
-        'question': '',
-        'answer1': '',
-        'answer2': '', 
-        'answer3': '', 
-        'answer4': '',
-        'correct': ''
-    },
-    {
-        'question': '',
-        'answer1': '',
-        'answer2': '', 
-        'answer3': '', 
-        'answer4': '',
-        'correct': ''
-    },
-    {
-        'question': '',
-        'answer1': '',
-        'answer2': '', 
-        'answer3': '', 
-        'answer4': '',
-        'correct': ''
-    },
-    {
-        'question': '',
-        'answer1': '',
-        'answer2': '', 
-        'answer3': '', 
-        'answer4': '',
-        'correct': ''
-    },
-    {
-        'question': '',
-        'answer1': '',
-        'answer2': '', 
-        'answer3': '', 
-        'answer4': '',
-        'correct': ''
-    },
-    {
-        'question': '',
-        'answer1': '',
-        'answer2': '', 
-        'answer3': '', 
-        'answer4': '',
-        'correct': ''
-    },
-    {
-        'question': '',
-        'answer1': '',
-        'answer2': '', 
-        'answer3': '', 
-        'answer4': '',
-        'correct': ''
-    },
-    {
-        'question': '',
-        'answer1': '',
-        'answer2': '', 
-        'answer3': '', 
-        'answer4': '',
-        'correct': ''
-    }
-
-];
+// ];
 let currentQ = 0;
 let positivResult = 0;
 let audio_success = new Audio('./audio/success.mp3');
@@ -283,7 +309,7 @@ let triumph = './img/trophy.png';
 let failure = './img/game_over.jpg';
 // This function reset the quiz, in the first part there is two possibilities of end screen related to the score of the user.
 function reset() {
-    if (positivResult/questions.length > 0.6){
+    if (positivResult/questions.length >= 0.6){
         document.getElementById('header-img').src = triumph;
         document.getElementById('header-img').classList.add('height-400px');
         audio_triumph.play();
