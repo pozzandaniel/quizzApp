@@ -323,6 +323,17 @@ let triumph = './img/trophy.png';
 let failure = './img/game_over.jpg';
 // This function reset the quiz, in the first part there is two possibilities of end screen related to the score of the user.
 function reset() {
+    conditionVictory();
+    document.getElementById('header-img').classList.add('img-end');
+    document.getElementById('endScreen').style = '';
+    document.getElementById('questionBody').style = 'display:none';
+    let totalQ = document.getElementById('totalQ');
+    let rightA = document.getElementById('rightA');
+    totalQ.innerHTML = questions.length;
+    rightA.innerHTML = positivResult;
+}
+
+function conditionVictory() {
     if (positivResult/questions.length >= 0.6){
         document.getElementById('header-img').src = triumph;
         document.getElementById('header-img').classList.add('height-400px');
@@ -332,13 +343,7 @@ function reset() {
         document.getElementById('header-img').classList.add('height-400px');
         audio_failure.play();
     }
-    document.getElementById('header-img').classList.add('img-end');
-    document.getElementById('endScreen').style = '';
-    document.getElementById('questionBody').style = 'display:none';
-    let totalQ = document.getElementById('totalQ');
-    let rightA = document.getElementById('rightA');
-    totalQ.innerHTML = questions.length;
-    rightA.innerHTML = positivResult;
+
 }
 
 function percentCalculate(){

@@ -38,9 +38,9 @@ h1 {
     justify-content: center;
 }
 .question-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
     position: fixed !important;
     top: 0;
     bottom: 0;
