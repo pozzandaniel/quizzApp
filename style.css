@@ -37,12 +37,25 @@ h1 {
     flex-direction: column;
     justify-content: center;
 }
+.question-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: fixed !important;
+    top: 0;
+    bottom: 0;
+}
 .card-first {
-    height: 70%;
+    height: 100%;
     width: 40%;
 }
 .card-body {
     font-size: 0.7rem;
+}
+.flex-justified {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 .card-title {
     font-size: 0.9rem;
@@ -74,6 +87,7 @@ h1 {
 }
 .progress {
     border-radius: 0 !important;
+    overflow: visible !important;
 }
 .button-row {
     display: flex;
@@ -93,8 +107,7 @@ h1 {
     margin: 12px !important;
 }
 .card-img-top{
-    height: 240px;
-    object-fit: cover;
+    height: 200px;
 }
 .cat-img{
     max-height: 130px;
